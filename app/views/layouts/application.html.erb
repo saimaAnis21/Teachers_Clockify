@@ -11,6 +11,31 @@
   </head>
 
   <body>
+  <header class="h-100-px w-100-p txtcolor-gray bgcolor-blue">
+    <nav class="p-20">
+              <% if logged_in? %>
+              <p>
+                <%= link_to "Logout", session_logout_path, method: :delete %>
+              </p>
+               <p>
+                <%= session[:current_user_name] %>
+              </p>
+              
+              <% else %>
+              <p>
+                <%= link_to 'Log In', session_new_path %>
+              </p>
+              <p>
+                <%= link_to 'Register', user_new_path %>
+              </p>
+              
+              
+					   <% end %>
+    </nav>
+  </header>
+  <div>
+  <%= show_anw %>
+  </div>
     <%= yield %>
   </body>
 </html>

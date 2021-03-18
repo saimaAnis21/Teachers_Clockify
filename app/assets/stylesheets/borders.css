@@ -1,0 +1,18 @@
+
+
+.no-border{
+    border: none;
+}
+
+.border-white{
+    border-color: white;
+}
+
+.border-solid{
+    border-style: solid;
+}
+
+.border-w-1px{
+    border-width: 1px;
+}
+

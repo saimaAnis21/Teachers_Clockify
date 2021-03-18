@@ -1,0 +1,14 @@
+<div class="bgcolor-white">
+  <div class="m-10 pt-10 pb-10">
+    <h2 class="color-darkgray caps txt-center m-10">Login</h2>
+      <div>
+        <%= form_with model: @session, scope: "session", class: ' color-darkgray txt-center' do |f| %>
+          <div>
+            <%= f.label :name %>
+            <%= f.text_field :name %> <br><br>
+            <div class="bgcolor-green h-50-px"><%= f.submit "Login", class: "caps border-w-1px border-white border-solid m-10 pl-40 pr-40  pt-5 pb-5 color-gray bgcolor-green" %></div>
+            </div>
+        <% end %>
+      </div>
+  </div>
+</div>
