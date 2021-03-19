@@ -42,6 +42,14 @@ padding-right: 40px;
     text-align: center;
 }
 
+.display-inline{
+    display: inline;
+}
+
+.float-r{
+    float: right;
+}
+
 
 
 

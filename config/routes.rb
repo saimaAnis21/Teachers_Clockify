@@ -8,6 +8,8 @@ Rails.application.routes.draw do
 
   get 'user/show', to: 'user#show'
 
+  get 'time_spent/show', to: 'time_spent#show'
+
   root "session#new"
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

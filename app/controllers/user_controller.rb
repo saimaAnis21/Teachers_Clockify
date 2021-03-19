@@ -1,7 +1,7 @@
 class UserController < ApplicationController
 
     def def new
-       
+       @user=User.new
     end
 
     def create
@@ -13,11 +13,11 @@ class UserController < ApplicationController
                     format.html{ redirect_to session_new_path, notice: 'User successfully created!!' }
                 else
                     if @user.errors.any?
-                        format.html {redirect_to user_new_path, alert: @user.errors.full_messages} 
+                        format.html {redirect_to user_new_path, alert: @user.errors.full_messages }
                     else 
-                        format.html {redirect_to user_new_path, alert: 'Invalid name!'}
-                    end  
-                        
+                        format.html {redirect_to user_new_path, alert: 'Invalid name!!'}
+                    end
+                       
                 end
             end
         end

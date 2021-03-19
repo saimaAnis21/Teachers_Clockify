@@ -1,0 +1,2 @@
+module TimeSpentHelper
+end
