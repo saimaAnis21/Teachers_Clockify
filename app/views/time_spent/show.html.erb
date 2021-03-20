@@ -1,20 +1,10 @@
 <div class="bgcolor-white h-50-px">
     <div class="p-20 ">
         
-            <div class="display-inline"><%= @ts.name %></div>
-            <div class="float-r"><%= @ts.Amount %></div>
+            <div class="d-inline color-darkgray"><%= @ts.name %></div>
+            <div class="float-r color-darkgray">Total: <%= time_in_hrs %> </div>
     </div>
 </div>
-<% @grp.each do |g| %>
-    <div class="bgcolor-white h-100-px m-10">
-        <div class="p-20 ">
-            <div class="display-inline"> 
-            
-            </div>
-            <div class="display-inline"><%= g.name %></div>
-            <div class="display-inline"><%= g.created_at %></div>
-            
-        </div>
-    </div>
-<%end%>
+
+<%= render 'shared/groupview'  %>
 

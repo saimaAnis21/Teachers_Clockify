@@ -42,13 +42,34 @@ padding-right: 40px;
     text-align: center;
 }
 
-.display-inline{
+.d-inline{
     display: inline;
 }
+
+.d-flex{
+    display: flex;
+        
+}
+
+.d-flex-c{
+    display: flex;
+    flex-direction: column;
+          
+}
+
+.ai-center{
+    align-items: center;
+}
+
+.jus-con-sp-btw{
+    justify-content:space-between ;
+}
+
 
 .float-r{
     float: right;
 }
+
 
 
 
