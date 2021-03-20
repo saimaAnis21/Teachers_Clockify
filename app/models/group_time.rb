@@ -5,4 +5,6 @@ class GroupTime < ApplicationRecord
 
   belongs_to :time_spent
   belongs_to :group
+
+  
 end

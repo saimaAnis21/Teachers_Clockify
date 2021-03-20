@@ -16,3 +16,8 @@
     border-width: 1px;
 }
 
+.vl {
+    border-left: 2px solid #f1f3f2;
+    height: 16px;
+  }
+

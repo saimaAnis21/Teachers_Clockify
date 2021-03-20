@@ -6,4 +6,7 @@ class TimeSpent < ApplicationRecord
   belongs_to :author, class_name: 'User'
   has_many   :group_times, dependent: :destroy
   has_many   :groups, through: :group_times
+
+
+  
 end

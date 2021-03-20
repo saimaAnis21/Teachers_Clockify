@@ -16,29 +16,24 @@
 
   <body>
   <header class="h-100-px w-100-p  bgcolor-blue">
-    <nav class="p-20">
-              <% if logged_in? %>
-                  <p>
-                    <%= link_to "Logout", session_logout_path, method: :delete %>
-                  </p>
-                  <p>
-                    <%= link_to "#{current_user.name}", user_show_path %>
-                  </p>
-                  
-                  <% else %>
-                  <p>
-                    <%= link_to 'Log In', session_new_path %>
-                  </p>
-                  <p>
-                    <%= link_to 'Register', user_new_path %>
-                  </p>
-              
-					   <% end %>
+    <nav class="pt-10 color-gray">
+        <div class="d-inline">
+           <%= icon_dis %>
+        </div>
+       <div class="float-r d-flex m-10 ">
+            <%= nav_dis %>
+        </div>
+
+        <div class="m-10 txt-center"><%= topic %></div>
+
     </nav>
+
   </header>
-  <div>
-  <%= show_anw %>
-  </div>
-    <%= yield %>
+    <div>
+          <%= show_anw %>
+
+    </div>
+    
+        <%= yield %>
   </body>
 </html>

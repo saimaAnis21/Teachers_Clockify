@@ -1,10 +1,10 @@
 module TimeSpentHelper
 
-    def time_in_hrs
+    def time_in_hrs(a)
         hrs=""
-        hrs= (@ts.Amount/60).to_s + " hrs "
-        if @ts.Amount%60
-            hrs = hrs + (@ts.Amount%60).to_s + " mins "
+        hrs= (a/60).to_s + " hrs "
+        if a%60
+            hrs = hrs + (a%60).to_s + " mins "
             
         end
         hrs

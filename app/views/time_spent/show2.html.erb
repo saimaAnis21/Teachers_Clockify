@@ -1,0 +1,17 @@
+
+<% @ts.each do |t| %>
+    <div class="bgcolor-white h-100-px m-10">
+        <div class="p-20 color-darkgray d-flex ai-center ">
+            
+            <div class="d-flex-c">
+                <div class="pb-10"><%= t.name %></div>
+                <div><%= t.created_at.strftime('%d %b %Y') %></div>
+            </div>
+            
+            <div class="pl-40"> 
+                <%= time_in_hrs(t.Amount) %>
+            </div>
+            
+        </div>
+    </div>
+<%end%>

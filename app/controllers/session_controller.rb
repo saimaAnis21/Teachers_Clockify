@@ -9,7 +9,7 @@ class SessionController < ApplicationController
         session[:current_user_id] = @user.id
         session[:current_user_name] = @user.name.to_s
         session[:logged_in] = true
-        format.html { redirect_to session_new_path, notice: 'Successfully Logged in!!' }
+        format.html { redirect_to user_show_path, notice: 'Successfully Logged in!!' }
       else
         format.html {redirect_to session_new_path, alert: 'Invalid name!'}
       end

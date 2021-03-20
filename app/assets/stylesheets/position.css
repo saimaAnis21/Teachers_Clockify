@@ -30,6 +30,10 @@ padding-left: 40px;
 padding-right: 40px;
 }
 
+.pr-10{
+padding-right: 10px;
+}
+
 .m-10{
     margin: 10px;
 }
@@ -57,6 +61,8 @@ padding-right: 40px;
           
 }
 
+
+
 .ai-center{
     align-items: center;
 }
@@ -67,6 +73,10 @@ padding-right: 40px;
 
 
 .float-r{
+    float: right;
+}
+
+.float-l{
     float: right;
 }
 
