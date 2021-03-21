@@ -8,6 +8,11 @@
     border-color: white;
 }
 
+
+.border-black{
+    border-color: black;
+}
+
 .border-solid{
     border-style: solid;
 }

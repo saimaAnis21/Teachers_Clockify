@@ -1,0 +1,27 @@
+<div class="bgcolor-white">
+  <div class="m-10 pt-10 pb-10">
+    <h2 class="color-darkgray caps txt-center m-10">Create new Group</h2>
+      <div>
+        <%= form_with model: @group, scope: "group", class: ' color-darkgray  ' do |f| %>
+          <div>
+            <div class=" p-20">
+                <%= f.label :name, "Name:" %>
+                <%= f.text_field :name, class:"m-10 pb-10" %> <br>
+               
+                <%= f.label :icon, "Group Icon:" %>
+                        
+                        <ul class="pt-10 ">
+                            <li class="pb-10"><%= f.radio_button :icon, 'fas fa-address-book', :checked => true %> <i class="fas fa-address-book fa-2x color-blue"></i> </li>
+                            <li><%= f.radio_button :icon, 'far fa-address-card' %> <i class="far fa-address-card color-blue fa-2x"></i> </li>
+                        </ul>
+                </div>
+            
+
+            <br><br>
+
+            <div class="bgcolor-green h-50-px txt-center"><%= f.submit "Submit", class: "caps border-w-1px border-white border-solid m-10 pl-40 pr-40  pt-5 pb-5 color-gray bgcolor-green" %></div>
+            </div>
+        <% end %>
+      </div>
+  </div>
+</div>

@@ -1,6 +1,6 @@
 class TimeSpentController < ApplicationController
   
-  before_action :current_user_exist?, :include => [:new, :create, :show, :show2]
+  before_action :current_user_exist?, :include => [:new, :new2, :create, :create2, :show, :show2]
 
   def new
     @tss=TimeSpent.new    
@@ -30,10 +30,33 @@ class TimeSpentController < ApplicationController
         end
   end
 
+  def new2
+    @ts2=TimeSpent.new    
+  end
+
+  def create2
+    amt = params[:loghrs][:amount].to_i
+    @ts2=current_user.time_spents.build(name:params[:loghrs][:name], Amount:amt)
+          respond_to do |format|
+            if @ts2.save
+              
+                  format.html{ redirect_to time_spent_plan_check_path, notice: 'Entry successfully created!!' }
+            else
+                  if @ts2.errors.any?
+                      format.html {redirect_to plan_check_new_path, alert: @tss.errors.full_messages }
+                  else 
+                      format.html {redirect_to plan_check_new_path, alert: 'Entry not created!!'}
+                  end
+                  
+            end
+        end
+  end
 
     def show
-      
-        @ts= TimeSpent.where(author_id:session[:current_user_id]).order("created_at").last
+        t= TimeSpent.where(author_id:session[:current_user_id]).all
+        ts_arr = (GroupTime.select("time_spent_id").distinct).map { |x| x.time_spent_id}
+        # @ts= TimeSpent.where(author_id:session[:current_user_id]).order("created_at").last
+        @ts= t.where('id IN (?)', Array.wrap(ts_arr)).order(created_at: :desc).last
         @grp= @ts.groups
       
     end
@@ -45,11 +68,13 @@ class TimeSpentController < ApplicationController
         
         ts_arr = (GroupTime.select("time_spent_id").distinct).map { |x| x.time_spent_id}
         
-        @ts= t.where('id NOT IN (?)', Array.wrap(ts_arr))
+        @ts= t.where('id NOT IN (?)', Array.wrap(ts_arr)).order(created_at: :desc)
 
      
     end
 
+    private
+    
     def timespent_params
       params.require(:loghrs).permit(:name, :amount, :group_id)
     end

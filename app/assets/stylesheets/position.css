@@ -14,6 +14,10 @@
     padding-bottom: 5px;
 }
 
+.pl-5{
+    padding-left: 5px;
+}
+
 .pt-10{
     padding-top: 10px;
 }
@@ -42,6 +46,10 @@ padding-right: 10px;
     margin: 20px;
 }
 
+.mb-10{
+    margin-bottom: 10px;
+}
+
 .mt-10{
     margin-top: 20px;
 }
@@ -62,7 +70,7 @@ padding-right: 10px;
 .d-flex-c{
     display: flex;
     flex-direction: column;
-          
+          justify-content: flex-start;
 }
 
 
