@@ -1,6 +1,7 @@
 class Group < ApplicationRecord
 
   validates :name, presence: true, length: { minimum: 5 }
+  validates :name, format: { with: /\A'Grade-'\d\Z/, message: "Correct format for writing name is 'Grade-x' replace x with the desired grade level "}
   validates_uniqueness_of :name, on: :create, message: "This group name is already taken!"
 
   belongs_to :user

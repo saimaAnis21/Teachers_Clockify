@@ -43,9 +43,9 @@ class TimeSpentController < ApplicationController
                   format.html{ redirect_to time_spent_plan_check_path, notice: 'Entry successfully created!!' }
             else
                   if @ts2.errors.any?
-                      format.html {redirect_to plan_check_new_path, alert: @tss.errors.full_messages }
+                      format.html {redirect_to time_spent_plan_check_new_path, alert: @ts2.errors.full_messages }
                   else 
-                      format.html {redirect_to plan_check_new_path, alert: 'Entry not created!!'}
+                      format.html {redirect_to time_spent_plan_check_new_path, alert: 'Entry not created!!'}
                   end
                   
             end
@@ -56,7 +56,7 @@ class TimeSpentController < ApplicationController
         t= TimeSpent.where(author_id:session[:current_user_id]).all
         ts_arr = (GroupTime.select("time_spent_id").distinct).map { |x| x.time_spent_id}
         # @ts= TimeSpent.where(author_id:session[:current_user_id]).order("created_at").last
-        @ts= t.where('id IN (?)', Array.wrap(ts_arr)).order(created_at: :desc).last
+        @ts= t.where('id IN (?)', Array.wrap(ts_arr)).order(created_at: :desc).first
         @grp= @ts.groups
       
     end

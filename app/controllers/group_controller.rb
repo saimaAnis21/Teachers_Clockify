@@ -1,5 +1,5 @@
 class GroupController < ApplicationController
-    before_action :current_user_exist?, :include => [:show]
+    before_action :current_user_exist?, :include => [:show, :new, :create]
     def show
        
         @grp = Group.where(user_id: session[:current_user_id]).order(created_at: :desc).all
