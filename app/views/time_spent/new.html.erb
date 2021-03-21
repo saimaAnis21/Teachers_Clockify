@@ -6,9 +6,9 @@
           <div>
             <%= f.label :name, "Subject" %>
             <%= f.text_field :name %> <br><br>
-            <%= f.label :amount, "Hours" %>
-            <%= f.text_field :amount %> <br><br>
-            <%#= select_tag(:group_name, options_for_select(@grp)) %>
+            <%= f.label :amount, "Duration(mins)" %>
+            <%= f.text_field :amount, class: "w-120-px" %> <br><br>
+            
             <%= f.collection_check_boxes :group_id, @grp, :id, :name %>
 
             <br><br>

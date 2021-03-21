@@ -1,4 +1,6 @@
 class UserController < ApplicationController
+    
+    before_action :current_user_exist?, :include => [:show]
 
     def def new
        @user=User.new
@@ -25,11 +27,9 @@ class UserController < ApplicationController
     end
 
     def show
-        if logged_in?
-             @user = User.find_by(id: session[:current_user_id])
-        else
-            redirect_to session_new_path
-        end
+        
+        @user = User.find_by(id: session[:current_user_id])
+       
     end
 
     private

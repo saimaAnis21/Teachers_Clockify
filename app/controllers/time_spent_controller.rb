@@ -1,27 +1,45 @@
 class TimeSpentController < ApplicationController
-
+  
+  before_action :current_user_exist?, :include => [:new, :create, :show, :show2]
 
   def new
-    @ts=TimeSpent.new
-    # @grp = (Group.select("name")).map { |x| x.name}
+    @tss=TimeSpent.new    
     @grp= Group.all
   end
 
   def create
+    grps= params[:loghrs][:group_id]
+    amt = params[:loghrs][:amount].to_i
+    @tss=current_user.time_spents.build(name:params[:loghrs][:name], Amount:amt)
+
+          respond_to do |format|
+            if @tss.save
+              grps.each do |g|
+                @gt = @tss.group_times.build(group_id: g)
+                  @gt.save
+                  end
+                format.html{ redirect_to time_spent_show_path, notice: 'Entry successfully created!!' }
+            else
+                if @tss.errors.any?
+                    format.html {redirect_to time_spent_new_path, alert: @tss.errors.full_messages }
+                else 
+                    format.html {redirect_to time_spent_new_path, alert: 'Entry not created!!'}
+                end
+                  
+            end
+        end
   end
 
 
     def show
-      if logged_in?
-        @ts= TimeSpent.where(author_id:session[:current_user_id]).take
+      
+        @ts= TimeSpent.where(author_id:session[:current_user_id]).order("created_at").last
         @grp= @ts.groups
-      else
-        redirect_to session_new_path
-      end
+      
     end
 
     def show2
-      if logged_in?
+     
         
         t= TimeSpent.where(author_id:session[:current_user_id]).all
         
@@ -29,12 +47,10 @@ class TimeSpentController < ApplicationController
         
         @ts= t.where('id NOT IN (?)', Array.wrap(ts_arr))
 
-      else
-        redirect_to session_new_path
-      end
+     
     end
 
-    def user_params
+    def timespent_params
       params.require(:loghrs).permit(:name, :amount, :group_id)
     end
 
