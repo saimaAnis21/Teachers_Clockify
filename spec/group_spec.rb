@@ -14,7 +14,7 @@ RSpec.describe 'Group', type: :model do
 
   it 'is valid without icon' do
     user = User.create(name: 'Janice')
-    grp = Group.create(name: 'Grade-2', user_id:user.id)
+    grp = Group.create(name: 'Grade-2', user_id: user.id)
     expect(grp).to be_valid
   end
 
