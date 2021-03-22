@@ -1,19 +1,20 @@
-# rubocop:disable Lint/Syntax
+# rubocop:disable Metrics/PerceivedComplexity
+# rubocop:disable Metrics/CyclomaticComplexity
 module ApplicationHelper
   def show_anw
     if flash[:alert]
-        render(partial: 'shared/alert')
+      render(partial: 'shared/alert')
     elsif flash[:notice]
-        render(partial: 'shared/notice')
+      render(partial: 'shared/notice')
     elsif flash[:warning]
-        render(partial: 'shared/warning')
-      end
+      render(partial: 'shared/warning')
+    end
   end
 
   def icon_dis
     content = ''
     if logged_in? && !request.url.include?('user/show')
-      content << link_to fa_icon('align-justify'), user_show_path, class: 'fa-3x color-green m-10'
+      content << "<span> #{link_to fa_icon('align-justify'), user_show_path, class: 'fa-3x color-green m-10'} </span>"
 
     end
     content.html_safe
@@ -59,4 +60,5 @@ module ApplicationHelper
     content.html_safe
   end
 end
-# rubocop:enable Lint/Syntax
+# rubocop:enable Metrics/PerceivedComplexity
+# rubocop:enable Metrics/CyclomaticComplexity
