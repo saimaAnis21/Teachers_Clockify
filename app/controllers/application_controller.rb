@@ -8,14 +8,10 @@ class ApplicationController < ActionController::Base
   end
 
   def current_user_exist?
-    if current_user.nil?
-      redirect_to session_new_path
-    end
-
+    redirect_to session_new_path if current_user.nil?
   end
 
   def logged_in?
     session[:logged_in]
   end
-  
 end

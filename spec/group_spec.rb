@@ -8,33 +8,32 @@ end
 RSpec.describe 'Group', type: :model do
   it 'is valid with a name' do
     user = User.create(name: 'Janet')
-    grp= Group.create(name:'Grade-1',Icon:'http://xtz.com', user_id:user.id)
+    grp = Group.create(name: 'Grade-1', Icon: 'http://xtz.com', user_id: user.id)
     expect(grp).to be_valid
   end
 
   it 'is valid without icon' do
     user = User.create(name: 'Janet')
-    grp= Group.create(name:'Grade-1', user_id:user.id)
+    grp = Group.create(name: 'Grade-1', user_id: user.id)
     expect(grp).to be_valid
   end
 
   it 'is not valid without name' do
     user = User.create(name: 'Janet')
-    grp= Group.create(Icon:'http://xtz.com', user_id:user.id)
+    grp = Group.create(Icon: 'http://xtz.com', user_id: user.id)
     expect(grp).to_not be_valid
   end
 
   it 'is not valid if name is less than 5 characters' do
     user = User.create(name: 'Janet')
-    grp= Group.create(name:'Grad', Icon:'http://xtz.com', user_id:user.id)
+    grp = Group.create(name: 'Grad', Icon: 'http://xtz.com', user_id: user.id)
     expect(grp).to_not be_valid
   end
 
   it 'is not valid if userid not present' do
-    grp= Group.create(name:'Grad', Icon:'http://xtz.com')
+    grp = Group.create(name: 'Grad', Icon: 'http://xtz.com')
     expect(grp).to_not be_valid
   end
-
 end
 
 describe 'associations' do

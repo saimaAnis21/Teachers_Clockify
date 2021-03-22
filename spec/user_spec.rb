@@ -12,7 +12,7 @@ RSpec.describe 'User', type: :model do
   end
 
   it 'is not valid without name' do
-    user = User.create()
+    user = User.create
     expect(user).to_not be_valid
   end
 
@@ -20,7 +20,6 @@ RSpec.describe 'User', type: :model do
     user = User.create(name: 'Jane')
     expect(user).to_not be_valid
   end
-
 end
 
 describe 'associations' do
