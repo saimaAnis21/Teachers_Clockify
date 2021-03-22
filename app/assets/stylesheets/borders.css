@@ -1,28 +1,24 @@
-
-
-.no-border{
-    border: none;
+.no-border {
+  border: none;
 }
 
-.border-white{
-    border-color: white;
+.border-white {
+  border-color: white;
 }
 
-
-.border-black{
-    border-color: black;
+.border-black {
+  border-color: black;
 }
 
-.border-solid{
-    border-style: solid;
+.border-solid {
+  border-style: solid;
 }
 
-.border-w-1px{
-    border-width: 1px;
+.border-w-1px {
+  border-width: 1px;
 }
 
 .vl {
-    border-left: 2px solid #f1f3f2;
-    height: 16px;
-  }
-
+  border-left: 2px solid #f1f3f2;
+  height: 16px;
+}
