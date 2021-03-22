@@ -1,128 +1,119 @@
-.p-20{
- padding: 20px;
+.p-20 {
+  padding: 20px;
 }
 
-.p-15{
-    padding: 15px;
-   }
-
-.pt-5{
-    padding-top: 5px;
+.p-15 {
+  padding: 15px;
 }
 
-.pb-5{
-    padding-bottom: 5px;
+.pt-5 {
+  padding-top: 5px;
 }
 
-.pl-5{
-    padding-left: 5px;
+.pb-5 {
+  padding-bottom: 5px;
 }
 
-.pl-15{
-    padding-left: 15px;
+.pl-5 {
+  padding-left: 5px;
 }
 
-.pt-10{
-    padding-top: 10px;
+.pl-15 {
+  padding-left: 15px;
 }
 
-.pb-10{
-    padding-bottom: 10px;
+.pt-10 {
+  padding-top: 10px;
 }
 
-.pl-40{
-padding-left: 40px;
+.pb-10 {
+  padding-bottom: 10px;
 }
 
-.pr-40{
-padding-right: 40px;
+.pl-40 {
+  padding-left: 40px;
 }
 
-.pr-10{
-padding-right: 10px;
+.pr-40 {
+  padding-right: 40px;
 }
 
-.m-10{
-    margin: 10px;
+.pr-10 {
+  padding-right: 10px;
 }
 
-.m-20{
-    margin: 20px;
+.m-10 {
+  margin: 10px;
 }
 
-.mb-10{
-    margin-bottom: 10px;
+.m-20 {
+  margin: 20px;
 }
 
-.mt-10{
-    margin-top: 20px;
+.mb-10 {
+  margin-bottom: 10px;
 }
 
-.txt-center{
-    text-align: center;
+.mt-10 {
+  margin-top: 20px;
 }
 
-.d-inline{
-    display: inline;
+.txt-center {
+  text-align: center;
 }
 
-.d-flex{
-    display: flex;
-        
+.d-inline {
+  display: inline;
 }
 
-.d-flex-c{
-    display: flex;
-    flex-direction: column;
-          justify-content: flex-start;
+.d-flex {
+  display: flex;
 }
 
-
-
-.ai-center{
-    align-items: center;
+.d-flex-c {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
 }
 
-.jus-con-sp-btw{
-    justify-content:space-between ;
+.ai-center {
+  align-items: center;
 }
 
-
-.float-r{
-    float: right;
+.jus-con-sp-btw {
+  justify-content: space-between;
 }
 
-.float-l{
-    float: right;
+.float-r {
+  float: right;
+}
+
+.float-l {
+  float: right;
 }
 
 .grid-container {
-    display: grid;
-    grid-template-columns: auto auto auto;
-    grid-gap: 5px;
-    padding: 10px;
-  }
-  
-  .grid-container > div {
-    
-    padding: 20px 0;
-    
-  }
+  display: grid;
+  grid-template-columns: auto auto auto;
+  grid-gap: 5px;
+  padding: 10px;
+}
+
+.grid-container > div {
+  padding: 20px 0;
+}
 
 .item1 {
-    grid-column-start: 1;
-    grid-column-end: 2;
-  }
+  grid-column-start: 1;
+  grid-column-end: 2;
+}
 
-  .item2 {
-    grid-column-start: 2;
-    grid-column-end: 3;
-  }
+.item2 {
+  grid-column-start: 2;
+  grid-column-end: 3;
+}
 
-  .item3 {
-    grid-column-start: 3;
-    grid-column-end: 4;
-  }
-
-
-
+.item3 {
+  grid-column-start: 3;
+  grid-column-end: 4;
+}
