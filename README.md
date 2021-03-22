@@ -1,6 +1,6 @@
 # Teachers Clockify Website  [Live Link](https://teacher-clockify.herokuapp.com/session/new)
 
-A website where teahcers log in their working hours. 
+A Mobile version website where teahcers log in their working hours. 
 ![](https://img.shields.io/badge/Microverse-blueviolet)
 ## User Login Page
 ![](app/assets/images/login.png)
