@@ -1,0 +1,20 @@
+<% @ts.each do |t| %>
+    <div class="bgcolor-white  m-10">
+        <div class="grid-container ">
+            
+            <div class="item1">
+                <div class="pb-10"><%= t.name %></div>
+                <div><%= t.created_at.strftime('%d %b %Y') %></div>
+            </div>
+            
+            <div class="item2"> 
+                <%= time_in_hrs(t.Amount) %>
+            </div>
+             <div class="item3"> 
+                <%= t.get_name(t.author_id).name %>
+            </div>
+        </div>
+        
+        
+    </div>
+<%end%>

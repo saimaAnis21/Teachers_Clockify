@@ -18,6 +18,10 @@
     padding-left: 5px;
 }
 
+.pl-15{
+    padding-left: 15px;
+}
+
 .pt-10{
     padding-top: 10px;
 }
@@ -92,7 +96,33 @@ padding-right: 10px;
     float: right;
 }
 
+.grid-container {
+    display: grid;
+    grid-template-columns: auto auto auto;
+    grid-gap: 5px;
+    padding: 10px;
+  }
+  
+  .grid-container > div {
+    
+    padding: 20px 0;
+    
+  }
 
+.item1 {
+    grid-column-start: 1;
+    grid-column-end: 2;
+  }
+
+  .item2 {
+    grid-column-start: 2;
+    grid-column-end: 3;
+  }
+
+  .item3 {
+    grid-column-start: 3;
+    grid-column-end: 4;
+  }
 
 
 

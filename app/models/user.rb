@@ -6,4 +6,6 @@ class User < ApplicationRecord
 
     has_many :time_spents, dependent: :destroy, foreign_key: 'author_id'
     has_many :groups, dependent: :destroy
+
+    
 end

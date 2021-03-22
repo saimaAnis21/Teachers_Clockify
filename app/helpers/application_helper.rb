@@ -47,6 +47,12 @@ module ApplicationHelper
             content << "Hours Spent Checking/Planning"
           elsif request.url.include?("group/show") 
             content << "Groups created by #{current_user.name}"
+          elsif request.url.include?("time_spent/new")
+            content << "Enter Teaching Hours" 
+          elsif request.url.include?("group/new")
+            content << "New Group"
+          elsif request.url.include?("group/teach?")
+            content << "Classes conducted"
           end
       end
       content.html_safe

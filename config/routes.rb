@@ -17,10 +17,12 @@ Rails.application.routes.draw do
 
   get 'time_spent/show', to: 'time_spent#show'
   get 'time_spent/plan_check', to: 'time_spent#show2'
+  
 
   get 'group/show', to: 'group#show'
   get 'group/new', to: 'group#new'
   post 'group/new', to: 'group#create'
+  get 'group/teach', to: 'group#teach'
   
   root "session#new"
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html

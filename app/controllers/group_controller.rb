@@ -1,5 +1,5 @@
 class GroupController < ApplicationController
-    before_action :current_user_exist?, :include => [:show, :new, :create]
+    before_action :current_user_exist?, :include => [:show, :new, :create, :teach]
     def show
        
         @grp = Group.where(user_id: session[:current_user_id]).order(created_at: :desc).all
@@ -25,6 +25,12 @@ class GroupController < ApplicationController
                     
               end
           end
+    end
+
+ def teach
+      grp = Group.find(params[:group_id])
+      @ts = grp.time_spents
+    
     end
 
     private
