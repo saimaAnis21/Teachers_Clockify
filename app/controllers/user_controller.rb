@@ -1,13 +1,13 @@
 class UserController < ApplicationController
     
-    before_action :current_user_exist?, :include => [:show]
+    before_action :current_user_exist?, :only => [:show]
 
     def def new
        @user=User.new
     end
 
     def create
-        if !logged_in?
+        
             @user = User.create(user_params)
             
             respond_to do |format|
@@ -22,7 +22,7 @@ class UserController < ApplicationController
                        
                 end
             end
-        end
+      
         
     end
 
