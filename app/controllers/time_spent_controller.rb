@@ -51,7 +51,7 @@ class TimeSpentController < ApplicationController
     t = TimeSpent.where(author_id: session[:current_user_id]).all
     ts_arr = GroupTime.select('time_spent_id').distinct.map(&:time_spent_id)
     @ts = t.where('id IN (?)', Array.wrap(ts_arr)).order(:created_at).last
-    @grp = @ts.groups if !@ts.nil?
+    @grp = @ts.groups unless @ts.nil?
   end
 
   def show2
