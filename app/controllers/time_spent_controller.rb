@@ -10,18 +10,20 @@ class TimeSpentController < ApplicationController
     grps = params[:loghrs][:group_id]
     amt = params[:loghrs][:amount].to_i
     @tss = current_user.time_spents.build(name: params[:loghrs][:name], Amount: amt)
-
+    
     respond_to do |format|
-      if @tss.save
-        grps.each do |g|
-          @gt = @tss.group_times.build(group_id: g)
-          @gt.save
+        if @tss.save
+          grps.each do |g|
+            @gt = @tss.group_times.build(group_id: g)
+            @gt.save
+            
         end
-        format.html { redirect_to time_spent_show_path, notice: 'Entry successfully created!!' }
+               
+        format.html { redirect_to time_spent_path, notice: 'Entry successfully created!!' }
       elsif @tss.errors.any?
-        format.html { redirect_to time_spent_new_path, alert: @tss.errors.full_messages }
+        format.html { redirect_to new_time_spent_path, alert: @tss.errors.full_messages }
       else
-        format.html { redirect_to time_spent_new_path, alert: 'Entry not created!!' }
+        format.html { redirect_to new_time_spent_path, alert: 'Entry not created!!' }
 
       end
     end
@@ -48,16 +50,18 @@ class TimeSpentController < ApplicationController
   end
 
   def show
-    t = TimeSpent.where(author_id: session[:current_user_id]).all
-    ts_arr = GroupTime.select('time_spent_id').distinct.map(&:time_spent_id)
-    @ts = t.where('id IN (?)', Array.wrap(ts_arr)).order(:created_at).last
+    # t = TimeSpent.where(author_id: session[:current_user_id]).all
+    # ts_arr = GroupTime.select('time_spent_id').distinct.map(&:time_spent_id)
+    # @ts = t.where('id IN (?)', Array.wrap(ts_arr)).order(:created_at).last
+    @ts = current_user.time_spents.where('id IN (?)', GroupTime.select('time_spent_id')).last
     @grp = @ts.groups unless @ts.nil?
   end
 
   def show2
-    t = TimeSpent.where(author_id: session[:current_user_id]).all
-    ts_arr = GroupTime.select('time_spent_id').distinct.map(&:time_spent_id)
-    @ts = t.where('id NOT IN (?)', Array.wrap(ts_arr)).order(created_at: :desc)
+    # t = TimeSpent.where(author_id: session[:current_user_id]).all
+    # ts_arr = GroupTime.select('time_spent_id').distinct.map(&:time_spent_id)
+    # @ts = t.where('id NOT IN (?)', Array.wrap(ts_arr)).order(created_at: :desc)
+    @ts = current_user.time_spents.where('id NOT IN (?)', GroupTime.select('time_spent_id')).order(created_at: :desc)
   end
 
   private

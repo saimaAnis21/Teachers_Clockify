@@ -5,19 +5,16 @@ class SessionController < ApplicationController
     @user = User.find_by(session_params)
     respond_to do |format|
       if !@user.nil?
-        session[:current_user_id] = @user.id
-        session[:current_user_name] = @user.name.to_s
-        session[:logged_in] = true
-        format.html { redirect_to user_show_path, notice: 'Successfully Logged in!!' }
+        set_session_var(format)
       else
-        format.html { redirect_to session_new_path, alert: 'Invalid name!' }
+        format.html { redirect_to new_session_path, alert: 'Invalid name!' }
       end
     end
   end
 
   def destroy
     reset_session
-    redirect_to session_new_path
+    redirect_to new_session_path
   end
 
   private

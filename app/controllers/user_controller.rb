@@ -10,11 +10,12 @@ class UserController < ApplicationController
 
     respond_to do |format|
       if @user.save
-        format.html { redirect_to session_new_path, notice: 'User successfully created!!' }
+        set_session_var(format)
+        
       elsif @user.errors.any?
-        format.html { redirect_to user_new_path, alert: @user.errors.full_messages }
+        format.html { redirect_to new_user_path, alert: @user.errors.full_messages }
       else
-        format.html { redirect_to user_new_path, alert: 'Invalid name!!' }
+        format.html { redirect_to new_user_path, alert: 'Invalid name!!' }
 
       end
     end
@@ -22,6 +23,8 @@ class UserController < ApplicationController
 
   def show
     @user = User.find_by(id: session[:current_user_id])
+    @total_hrs = @user.time_spents.sum('Amount')
+
   end
 
   private
