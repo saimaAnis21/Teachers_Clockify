@@ -13,19 +13,19 @@ class GroupController < ApplicationController
 
     respond_to do |format|
       if @grp.save
-        format.html { redirect_to group_show_path, notice: 'Group successfully created!!' }
+        format.html { redirect_to group_path, notice: 'Group successfully created!!' }
       elsif @grp.errors.any?
-        format.html { redirect_to group_new_path, alert: @grp.errors.full_messages }
+        format.html { redirect_to new_group_path, alert: @grp.errors.full_messages }
       else
-        format.html { redirect_to group_new_path, alert: 'Group not created!' }
+        format.html { redirect_to new_group_path, alert: 'Group not created!' }
 
       end
     end
   end
 
   def teach
-    grp = Group.find(params[:group_id])
-    @ts = grp.time_spents
+    @grp = Group.find(params[:group_id])
+    @ts = @grp.time_spents
   end
 
   private
