@@ -3,7 +3,7 @@
     <h2 class="color-darkgray caps txt-center m-10">Register</h2>
     
       <div>
-        <%= form_with model: @user, scope: "user", class: ' color-darkgray txt-center' do |f| %>
+        <%= form_with model: @user, scope: "user", url: user_path, class: ' color-darkgray txt-center' do |f| %>
           <div>
             <%= f.label :name %>
             <%= f.text_field :name %> <br><br>

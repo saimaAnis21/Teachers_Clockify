@@ -43,7 +43,8 @@ Clone this project by typing ```git clone git@github.com:saimaAnis21/Teachers_Cl
 
 ### Run app
 - Type ```bundle install``` in the root file of the project.
-- Install yarn by typing ```gem install yarn```.
+- Install yarn by typing ```gem install yarn``` or simply run ```npm install --global yarn```
+- Check if the yarn has been installed by running ```yarn --version```
 - Type  ```rails db:migrate``` in the root file of the project. 
 - Type ```rails s``` in the root file of the project.
 - Goto [local host](http://localhost:3000/)

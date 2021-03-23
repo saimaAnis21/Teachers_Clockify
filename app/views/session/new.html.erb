@@ -2,7 +2,7 @@
   <div class="m-10 pt-10 pb-10">
     <h2 class="color-darkgray caps txt-center m-10">Login</h2>
       <div>
-        <%= form_with model: @session, scope: "session", class: ' color-darkgray txt-center' do |f| %>
+        <%= form_with model: @session, scope: "session", url: session_path, class: ' color-darkgray txt-center' do |f| %>
           <div>
             <%= f.label :name %>
             <%= f.text_field :name %> <br><br>

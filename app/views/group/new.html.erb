@@ -2,7 +2,7 @@
   <div class="m-10 pt-10 pb-10">
     <h2 class="color-darkgray caps txt-center m-10">Create new Group</h2>
       <div>
-        <%= form_with model: @group, scope: "group", class: ' color-darkgray  ' do |f| %>
+        <%= form_with model: @group, scope: "group", url: group_path, class: ' color-darkgray  ' do |f| %>
           <div>
             <div class=" p-20">
                 <%= f.label :name, "Name:" %>

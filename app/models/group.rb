@@ -8,4 +8,6 @@ class Group < ApplicationRecord
   belongs_to :user
   has_many :group_times, dependent: :destroy
   has_many :time_spents, through: :group_times
+
+ 
 end

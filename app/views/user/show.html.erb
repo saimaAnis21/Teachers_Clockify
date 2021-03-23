@@ -1,10 +1,17 @@
 <body class="bgcolor-blue">
+
+<div class="m-10 pt-10 pb-10 txt-center">
+ <p class="color-gray caps bgcolor-green p-20">Total Hours: <%= time_in_hrs(@total_hrs) %></p>
+ 
+</div>
+
 <div class="bgcolor-blue">
     <div class="m-10 pt-10 pb-10">
             <ul class="p-20">
-                <li class="p-20"><%= link_to 'Hours Logged for Teaching', time_spent_show_path %></li>
+                <li class="p-20"><%= link_to 'Hours Logged for Teaching', time_spent_path %></li>
                 <li class="p-20"><%= link_to 'Hours Logged for planning/checking', time_spent_plan_check_path %></li>
-                <li class="p-20"><%= link_to 'All Grades', group_show_path %></li>
+                <li class="p-20"><%= link_to 'All Grades', group_path %></li>
+                
             </ul>
     </div>
 </div>

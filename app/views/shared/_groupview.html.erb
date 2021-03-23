@@ -7,7 +7,7 @@
             <div class="d-flex-c">
                 <div class="pb-10"><%= g.name %></div>
                 <div class="pb-10"><%= g.created_at.strftime('%d %b %Y') %></div>
-                <%= link_to 'Click here', group_teach_path(:group_id => g.id), class: 'color-blue' %>    
+                <%= link_to 'Click here', teach_group_path(:group_id => g.id), class: 'color-blue' %>    
             </div>
             
             
