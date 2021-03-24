@@ -5,7 +5,7 @@ class SessionController < ApplicationController
     @user = User.find_by(session_params)
     respond_to do |format|
       if !@user.nil?
-        set_session_var(format)
+        session_var(format)
       else
         format.html { redirect_to new_session_path, alert: 'Invalid name!' }
       end

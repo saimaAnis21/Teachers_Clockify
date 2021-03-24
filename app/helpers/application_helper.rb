@@ -1,13 +1,12 @@
 # rubocop:disable Metrics/PerceivedComplexity
 # rubocop:disable Metrics/CyclomaticComplexity
 module ApplicationHelper
-
   def time_in_hrs(mins)
     hrs = (mins / 60).to_s.concat(' hrs ')
     hrs.concat((mins % 60).to_s.concat(' mins ')) if mins % 60
     hrs
   end
-  
+
   def show_anw
     if flash[:alert]
       render(partial: 'shared/alert')
@@ -20,7 +19,7 @@ module ApplicationHelper
 
   def icon_dis
     content = ''
-    if !request.url.include?('user')
+    unless request.url.include?('user')
       content << "<span> #{link_to fa_icon('align-justify'), user_path, class: 'fa-3x color-green m-10'} </span>"
 
     end

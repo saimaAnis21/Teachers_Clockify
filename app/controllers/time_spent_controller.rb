@@ -7,27 +7,23 @@ class TimeSpentController < ApplicationController
   end
 
   def create
-    
-    
-    amt = params[:loghrs][:amount].to_i
-    @tss = current_user.time_spents.build(name: params[:loghrs][:name], Amount: amt)
-    
-    respond_to do |format|
-        if @tss.save
-          if !params[:loghrs][:group_id].nil?
-                grps = params[:loghrs][:group_id]
+    @tss = current_user.time_spents.build(name: params[:loghrs][:name], Amount: params[:loghrs][:amount].to_i)
 
-                grps.each do |g|
-                  @gt = @tss.group_times.build(group_id: g)
-                  @gt.save
-                  
-              end
-              params[:loghrs][:group_id]=''
-              format.html { redirect_to time_spent_path, notice: 'Entry successfully created!!' }
-          else
-              format.html { redirect_to plancheckshow_time_spent_path, notice: 'Entry successfully created!!' }
-          end         
-        
+    respond_to do |format|
+      if @tss.save
+        if !params[:loghrs][:group_id].nil?
+          grps = params[:loghrs][:group_id]
+
+          grps.each do |g|
+            @gt = @tss.group_times.build(group_id: g)
+            @gt.save
+          end
+          params[:loghrs][:group_id] = ''
+          format.html { redirect_to time_spent_path, notice: 'Entry successfully created!!' }
+        else
+          format.html { redirect_to plancheckshow_time_spent_path, notice: 'Entry successfully created!!' }
+        end
+
       elsif @tss.errors.any?
         format.html { redirect_to new_time_spent_path, alert: @tss.errors.full_messages }
       else
