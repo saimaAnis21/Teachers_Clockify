@@ -13,22 +13,16 @@ class TimeSpentController < ApplicationController
       end
     else
       @tss = current_user.time_spents.build(name: params[:loghrs][:name], Amount: params[:loghrs][:amount].to_i)
-
       respond_to do |format|
         if @tss.save
           if !params[:loghrs][:group_id].nil?
             @tss.create_gt(params[:loghrs][:group_id])
             format.html { redirect_to time_spent_path, notice: 'time_spent Entry successfully created!!' }
-
           else
             format.html { redirect_to plancheckshow_time_spent_path, notice: 'plan_check Entry successfully created!!' }
           end
-
-        elsif @tss.errors.any?
-          format.html { redirect_to new_time_spent_path, alert: @tss.errors.full_messages }
         else
-          format.html { redirect_to new_time_spent_path, alert: 'Entry not created!!' }
-
+          format.html { redirect_to new_time_spent_path, alert: @tss.errors.full_messages }
         end
       end
     end
