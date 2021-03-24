@@ -1,3 +1,4 @@
+# rubocop:disable Metrics/PerceivedComplexity
 class TimeSpentController < ApplicationController
   before_action :current_user_exist?, include: %i[new new2 create create2 show show2]
 
@@ -67,3 +68,4 @@ class TimeSpentController < ApplicationController
     params.require(:loghrs).permit(:name, :amount, :group_id, :withgrp)
   end
 end
+# rubocop:enable Metrics/PerceivedComplexity
