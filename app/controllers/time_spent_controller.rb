@@ -7,19 +7,27 @@ class TimeSpentController < ApplicationController
   end
 
   def create
-    grps = params[:loghrs][:group_id]
+    
+    
     amt = params[:loghrs][:amount].to_i
     @tss = current_user.time_spents.build(name: params[:loghrs][:name], Amount: amt)
     
     respond_to do |format|
         if @tss.save
-          grps.each do |g|
-            @gt = @tss.group_times.build(group_id: g)
-            @gt.save
-            
-        end
-               
-        format.html { redirect_to time_spent_path, notice: 'Entry successfully created!!' }
+          if !params[:loghrs][:group_id].nil?
+                grps = params[:loghrs][:group_id]
+
+                grps.each do |g|
+                  @gt = @tss.group_times.build(group_id: g)
+                  @gt.save
+                  
+              end
+              params[:loghrs][:group_id]=''
+              format.html { redirect_to time_spent_path, notice: 'Entry successfully created!!' }
+          else
+              format.html { redirect_to plancheckshow_time_spent_path, notice: 'Entry successfully created!!' }
+          end         
+        
       elsif @tss.errors.any?
         format.html { redirect_to new_time_spent_path, alert: @tss.errors.full_messages }
       else
@@ -29,25 +37,25 @@ class TimeSpentController < ApplicationController
     end
   end
 
-  def new2
+  def planchecknew
     @ts2 = TimeSpent.new
   end
 
-  def create2
-    amt = params[:loghrs][:amount].to_i
-    @ts2 = current_user.time_spents.build(name: params[:loghrs][:name], Amount: amt)
-    respond_to do |format|
-      if @ts2.save
+  # def create2
+  #   amt = params[:loghrs][:amount].to_i
+  #   @ts2 = current_user.time_spents.build(name: params[:loghrs][:name], Amount: amt)
+  #   respond_to do |format|
+  #     if @ts2.save
 
-        format.html { redirect_to time_spent_plan_check_path, notice: 'Entry successfully created!!' }
-      elsif @ts2.errors.any?
-        format.html { redirect_to time_spent_plan_check_new_path, alert: @ts2.errors.full_messages }
-      else
-        format.html { redirect_to time_spent_plan_check_new_path, alert: 'Entry not created!!' }
+  #       format.html { redirect_to time_spent_plan_check_path, notice: 'Entry successfully created!!' }
+  #     elsif @ts2.errors.any?
+  #       format.html { redirect_to time_spent_plan_check_new_path, alert: @ts2.errors.full_messages }
+  #     else
+  #       format.html { redirect_to time_spent_plan_check_new_path, alert: 'Entry not created!!' }
 
-      end
-    end
-  end
+  #     end
+  #   end
+  # end
 
   def show
     # t = TimeSpent.where(author_id: session[:current_user_id]).all
@@ -57,7 +65,7 @@ class TimeSpentController < ApplicationController
     @grp = @ts.groups unless @ts.nil?
   end
 
-  def show2
+  def plancheckshow
     # t = TimeSpent.where(author_id: session[:current_user_id]).all
     # ts_arr = GroupTime.select('time_spent_id').distinct.map(&:time_spent_id)
     # @ts = t.where('id NOT IN (?)', Array.wrap(ts_arr)).order(created_at: :desc)

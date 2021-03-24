@@ -2,7 +2,7 @@
   <div class="m-10 pt-10 pb-10">
     <h2 class="color-darkgray caps txt-center m-10">Log Working Hours</h2>
       <div>
-        <%= form_with model: @time_spent, scope: "loghrs", class: ' color-darkgray ' do |f| %>
+        <%= form_with model: @time_spent, scope: "loghrs", url: time_spent_path, class: ' color-darkgray ' do |f| %>
           <div>
             <%= f.label :name, "Task" %>
             <%#= f.text_field :name %>

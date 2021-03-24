@@ -8,24 +8,12 @@ Rails.application.routes.draw do
     end
   end
 
-  resource :time_spent, only: [:new, :create, :show], controller: 'time_spent' 
-  # do
-   
-  #   resources :plan_check, only: [:new, :create, :show]
-      
-  # end
-   
-  # get 'time_spent/new', to: 'time_spent#new'
-  # post 'time_spent/new', to: 'time_spent#create'
-
-  get 'time_spent/plan_check_new', to: 'time_spent#new2'
-  post 'time_spent/plan_check_new', to: 'time_spent#create2'
-
-  # get 'time_spent/show', to: 'time_spent#show'
-  get 'time_spent/plan_check', to: 'time_spent#show2'
-  
-
- 
+  resource :time_spent, only: [:new, :create, :show], controller: 'time_spent' do
+    member do
+      get :plancheckshow
+      get :planchecknew
+    end
+  end
   
   root "session#new"
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
