@@ -22,15 +22,15 @@ RSpec.feature 'Users' do
     click_on 'Log In'
     fill_in 'Name', with: 'user1'
     click_on 'Login'
-    expect(current_path).to eql('/user/show')
+    expect(current_path).to eql('/user')
     click_on 'Hours Logged for planning/checking'
-    expect(current_path).to eql('/time_spent/plan_check')
+    expect(current_path).to eql('/time_spent/plancheckshow')
     click_on 'Log Planning/Checking Hours'
-    expect(current_path).to eql('/time_spent/plan_check_new')
+    expect(current_path).to eql('/time_spent/planchecknew')
     select 'Checking', from: 'loghrs_name'
     fill_in 'Duration', with: '120'
     click_on 'Submit'
-    expect(current_path).to eql('/time_spent/plan_check')
+    expect(current_path).to eql('/time_spent/plancheckshow')
     expect(page).to have_content 'Checking'
   end
 end

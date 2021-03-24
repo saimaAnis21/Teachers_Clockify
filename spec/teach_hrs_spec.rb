@@ -22,16 +22,16 @@ RSpec.feature 'Users' do
     click_on 'Log In'
     fill_in 'Name', with: 'user1'
     click_on 'Login'
-    expect(current_path).to eql('/user/show')
+    expect(current_path).to eql('/user')
     click_on 'Hours Logged for Teaching'
-    expect(current_path).to eql('/time_spent/show')
+    expect(current_path).to eql('/time_spent')
     click_on 'Log Teaching Hours'
     expect(current_path).to eql('/time_spent/new')
     select 'Maths', from: 'loghrs_name'
     fill_in 'Duration', with: '120'
     check 'loghrs_group_id_1'
     click_on 'Submit'
-    expect(current_path).to eql('/time_spent/show')
+    expect(current_path).to eql('/time_spent')
     expect(page).to have_content 'Maths'
     expect(page).to have_content 'Grade-1'
   end

@@ -22,6 +22,6 @@ RSpec.feature 'Users' do
     click_on 'Log In'
     fill_in 'Name', with: 'user1'
     click_on 'Login'
-    expect(current_path).to eql('/user/show')
+    expect(current_path).to eql('/user')
   end
 end

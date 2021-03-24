@@ -49,19 +49,23 @@ module ApplicationHelper
   def topic
     content = ''
     if logged_in?
-      if request.url.include?('time_spent/show')
-        content << 'Hours Spent Teaching'
-      elsif request.url.include?('time_spent/plan_check')
-        content << 'Hours Spent Checking/Planning'
-      elsif request.url.include?('group/show')
-        content << "Groups created by #{current_user.name}"
-      elsif request.url.include?('time_spent/new')
+      if request.url.include?('time_spent/new')
         content << 'Enter Teaching Hours'
+      elsif request.url.include?('plancheckshow')
+        content << 'Hours Spent Checking/Planning'
+      elsif request.url.include?('planchecknew')
+        content << 'Enter Checking/Planning Hours'
       elsif request.url.include?('group/new')
         content << 'New Group'
-      elsif request.url.include?('group/teach?')
+      elsif request.url.include?('time_spent')
+        content << 'Hours Spent Teaching'
+      elsif request.url.include?('teach?group_id')
         content << 'Classes conducted'
+      elsif request.url.include?('group')
+        content << "Groups created by #{current_user.name}"
       end
+    else
+      content << "<p class='caps'>Teachers-Clockify</p>"
     end
     content.html_safe
   end

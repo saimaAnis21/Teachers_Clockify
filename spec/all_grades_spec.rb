@@ -22,15 +22,15 @@ RSpec.feature 'Users' do
     click_on 'Log In'
     fill_in 'Name', with: 'user1'
     click_on 'Login'
-    expect(current_path).to eql('/user/show')
+    expect(current_path).to eql('/user')
     click_on 'All Grades'
-    expect(current_path).to eql('/group/show')
+    expect(current_path).to eql('/group')
     click_on 'Add Grade'
     expect(current_path).to eql('/group/new')
     fill_in 'Name', with: 'Grade-2'
     choose 'group_icon_fas_fa-address-book'
     click_on 'Submit'
-    expect(current_path).to eql('/group/show')
+    expect(current_path).to eql('/group')
     expect(page).to have_content 'Grade-2'
   end
 end
