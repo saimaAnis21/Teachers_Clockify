@@ -8,9 +8,7 @@ class TimeSpentController < ApplicationController
 
   def create
     if params[:loghrs][:group_id] == [''] && params[:loghrs][:withgrp]
-      respond_to do |f|
-        f.html { redirect_to new_time_spent_path, notice: 'Please select Grade(s)' }
-      end
+      redirect_to new_time_spent_path, notice: 'Please select Grade(s)'
     else
       @tss = current_user.time_spents.build(name: params[:loghrs][:name], Amount: params[:loghrs][:amount].to_i)
       respond_to do |format|
