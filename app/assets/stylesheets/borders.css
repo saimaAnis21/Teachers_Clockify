@@ -10,6 +10,10 @@
   border-color: black;
 }
 
+border-red {
+  border-color: red;
+}
+
 .border-solid {
   border-style: solid;
 }

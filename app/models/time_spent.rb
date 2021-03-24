@@ -9,8 +9,15 @@ class TimeSpent < ApplicationRecord
   has_many :group_times, dependent: :destroy
   has_many :groups, through: :group_times
 
-  def get_name(userid)
-    @usr = User.select('name').where(id: userid).take
-    @usr
+  # def get_name(userid)
+  #   @usr = User.select('name').where(id: userid).take
+  #   @usr
+  # end
+
+  def create_gt(gids)
+    gids.each do |g|
+      gt = group_times.build(group_id: g)
+      gt.save
+    end
   end
 end

@@ -7,28 +7,29 @@ class TimeSpentController < ApplicationController
   end
 
   def create
-    @tss = current_user.time_spents.build(name: params[:loghrs][:name], Amount: params[:loghrs][:amount].to_i)
+    if params[:loghrs][:group_id] == [''] && params[:loghrs][:withgrp]
+      respond_to do |f|
+        f.html { redirect_to new_time_spent_path, notice: 'Please select Grade(s)' }
+      end
+    else
+      @tss = current_user.time_spents.build(name: params[:loghrs][:name], Amount: params[:loghrs][:amount].to_i)
 
-    respond_to do |format|
-      if @tss.save
-        if !params[:loghrs][:group_id].nil?
-          grps = params[:loghrs][:group_id]
+      respond_to do |format|
+        if @tss.save
+          if !params[:loghrs][:group_id].nil?
+            @tss.create_gt(params[:loghrs][:group_id])
+            format.html { redirect_to time_spent_path, notice: 'time_spent Entry successfully created!!' }
 
-          grps.each do |g|
-            @gt = @tss.group_times.build(group_id: g)
-            @gt.save
+          else
+            format.html { redirect_to plancheckshow_time_spent_path, notice: 'plan_check Entry successfully created!!' }
           end
-          params[:loghrs][:group_id] = ''
-          format.html { redirect_to time_spent_path, notice: 'Entry successfully created!!' }
+
+        elsif @tss.errors.any?
+          format.html { redirect_to new_time_spent_path, alert: @tss.errors.full_messages }
         else
-          format.html { redirect_to plancheckshow_time_spent_path, notice: 'Entry successfully created!!' }
+          format.html { redirect_to new_time_spent_path, alert: 'Entry not created!!' }
+
         end
-
-      elsif @tss.errors.any?
-        format.html { redirect_to new_time_spent_path, alert: @tss.errors.full_messages }
-      else
-        format.html { redirect_to new_time_spent_path, alert: 'Entry not created!!' }
-
       end
     end
   end
@@ -71,6 +72,6 @@ class TimeSpentController < ApplicationController
   private
 
   def timespent_params
-    params.require(:loghrs).permit(:name, :amount, :group_id)
+    params.require(:loghrs).permit(:name, :amount, :group_id, :withgrp)
   end
 end

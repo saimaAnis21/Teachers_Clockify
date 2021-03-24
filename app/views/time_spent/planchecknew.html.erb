@@ -10,7 +10,7 @@
              <br><br>
             <%= f.label :amount, "Duration(mins)" %>
             <%= f.text_field :amount, class: "w-120-px" %> <br><br>
-          
+              <%= f.hidden_field :withgrp, :value => false %>
             <div class="txt-center bgcolor-green h-50-px"><%= f.submit "Submit", class: "caps border-w-1px border-white border-solid m-10 pl-40 pr-40  pt-5 pb-5 color-gray bgcolor-green" %></div>
             </div>
         <% end %>

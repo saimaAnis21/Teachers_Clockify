@@ -2,10 +2,10 @@
   <div class="m-10 pt-10 pb-10">
     <h2 class="color-darkgray caps txt-center m-10">Log Working Hours</h2>
       <div>
-        <%= form_with model: @time_spent, scope: "loghrs", url: time_spent_path, class: ' color-darkgray ' do |f| %>
+        <%= form_with model: @time_spent, scope: "loghrs", url: time_spent_path, validate: true, class: ' color-darkgray ' do |f| %>
           <div>
             <%= f.label :name, "Subject" %>
-            <%#= f.text_field :name %> 
+            
             <%= f.select(:name, options_for_select([['Science'], ['Maths'], ['Physical Education'], ['Arts & Crafts']])) %>
             
             <br><br>
@@ -17,7 +17,7 @@
                       <li class="m-10 p-10"><%= b.label { b.check_box + b.text } %> </li>
                         <% end %>
             </ul>
-
+              <%= f.hidden_field :withgrp, :value => true %>
             <br><br>
             <div class="bgcolor-green h-50-px txt-center"><%= f.submit "Submit", class: "caps border-w-1px border-white border-solid m-10 pl-40 pr-40  pt-5 pb-5 color-gray bgcolor-green" %></div>
             </div>
